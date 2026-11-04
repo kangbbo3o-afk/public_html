@@ -1,6 +1,5 @@
 // 여행지 데이터 (기획서 기준)
 const places = [
-  
   {
     id: 'gangneung',
     name: '강릉',
@@ -100,6 +99,36 @@ const places = [
     date: '',
     description: '바다와 산업도시의 서로 다른 풍경을 보고 싶은 곳.',
     image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85'
+  },
+  {
+    id: 'osaka',
+    name: '오사카',
+    english: 'OSAKA',
+    region: '해외',
+    status: 'visited',
+    date: '2026-08-15',
+    description: '맛있는 음식과 활기찬 거리가 있는 도시.',
+    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf'
+  },
+  {
+    id: 'swiss',
+    name: '스위스',
+    english: 'SWITZERLAND',
+    region: '해외',
+    status: 'wishlist',
+    date: '',
+    description: '대자연과 알프스의 아름다운 풍경을 만나는 곳.',
+    image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99'
+  },
+  {
+    id: 'newyork',
+    name: '뉴욕',
+    english: 'NEW YORK',
+    region: '해외',
+    status: 'wishlist',
+    date: '',
+    description: '화려한 야경과 트렌디함이 공존하는 대도시.',
+    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9'
   }
 ];
 
@@ -291,14 +320,12 @@ function initScrollInteractions() {
   const sections = ['home', 'about', 'travel', 'archive'].map(id => document.getElementById(id)).filter(Boolean);
 
   function onScroll() {
-    // 1. 헤더 다크 블러 배경 토글
     if (window.scrollY > 40) {
       siteHeader.classList.add('scrolled');
     } else {
       siteHeader.classList.remove('scrolled');
     }
 
-    // 2. 현재 스크롤 위치에 따른 내비게이션 활성 링크 갱신
     const scrollPos = window.scrollY + 120;
     let currentSectionId = 'home';
 
@@ -338,7 +365,6 @@ function initMobileNav() {
     });
   });
 
-  // 메뉴 바깥 클릭 시 닫기
   document.addEventListener('click', event => {
     if (mainNav.classList.contains('open') &&
         !mainNav.contains(event.target) &&
@@ -371,7 +397,6 @@ function initLightboxTouch() {
 
 // 이벤트 리스너 등록
 function initEventListeners() {
-  // 상태 탭 (ALL / VISITED / WISHLIST)
   document.querySelectorAll('.status-tab').forEach(button => {
     button.addEventListener('click', () => {
       activeStatus = button.dataset.status;
@@ -380,11 +405,9 @@ function initEventListeners() {
     });
   });
 
-  // 지역 필터 & 정렬
   regionFilter.addEventListener('change', renderPlaces);
   sortOrder.addEventListener('change', renderArchive);
 
-  // 라이트박스 컨트롤
   const closeBtn = lightbox.querySelector('.lightbox-close');
   const prevBtn = lightbox.querySelector('.lightbox-prev');
   const nextBtn = lightbox.querySelector('.lightbox-next');
@@ -397,7 +420,6 @@ function initEventListeners() {
     if (event.target === lightbox) closeLightbox();
   });
 
-  // 키보드 내비게이션 (Esc, 화살표)
   document.addEventListener('keydown', event => {
     if (!lightbox.classList.contains('open')) return;
     if (event.key === 'Escape') closeLightbox();
@@ -405,7 +427,6 @@ function initEventListeners() {
     if (event.key === 'ArrowRight') moveLightbox(1);
   });
 
-  // 부드러운 스크롤 등장 효과 (IntersectionObserver)
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -417,7 +438,6 @@ function initEventListeners() {
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // 비디오 로드 에러 핸들링
   if (heroVideo) {
     heroVideo.addEventListener('error', () => {
       heroVideo.style.display = 'none';
@@ -438,33 +458,3 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-{
-    id: 'osaka',
-    name: '오사카',
-    english: 'OSAKA',
-    region: '해외',
-    status: 'visited', // 다녀온 곳
-    date: '2026-08-15',
-    description: '맛있는 음식과 활기찬 거리가 있는 도시.',
-    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf'
-  },
-  {
-    id: 'swiss',
-    name: '스위스',
-    english: 'SWITZERLAND',
-    region: '해외',
-    status: 'wishlist', // 가고싶은 곳
-    date: '',
-    description: '대자연과 알프스의 아름다운 풍경을 만나는 곳.',
-    image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99'
-  },
-  {
-    id: 'newyork',
-    name: '뉴욕',
-    english: 'NEW YORK',
-    region: '해외',
-    status: 'wishlist', // 가고싶은 곳
-    date: '',
-    description: '화려한 야경과 트렌디함이 공존하는 대도시.',
-    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9'
-  },
