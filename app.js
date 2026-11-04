@@ -1,6 +1,36 @@
 // 여행지 데이터 (기획서 기준)
 const places = [
   {
+    id: 'osaka',
+    name: '오사카',
+    english: 'OSAKA',
+    region: '해외',
+    status: 'visited',
+    date: '2026-08-15',
+    description: '맛있는 음식과 활기찬 거리가 있는 도시.',
+    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf'
+  },
+  {
+    id: 'swiss',
+    name: '스위스',
+    english: 'SWITZERLAND',
+    region: '해외',
+    status: 'wishlist',
+    date: '',
+    description: '대자연과 알프스의 아름다운 풍경을 만나는 곳.',
+    image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99'
+  },
+  {
+    id: 'newyork',
+    name: '뉴욕',
+    english: 'NEW YORK',
+    region: '해외',
+    status: 'wishlist',
+    date: '',
+    description: '화려한 야경과 트렌디함이 공존하는 대도시.',
+    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9'
+  },
+  {
     id: 'gangneung',
     name: '강릉',
     english: 'GANGNEUNG',
