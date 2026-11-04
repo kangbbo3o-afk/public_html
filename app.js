@@ -1,6 +1,6 @@
 // 여행지 데이터 (기획서 기준)
 const places = [
-  {
+  
   {
     id: 'gangneung',
     name: '강릉',
